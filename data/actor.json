@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Robert Downey Jr.",
+    "role": "Diễn viên",
+    "image": "https://image.tmdb.org/t/p/w500/im9SA2SmallUvYp8O7urS6eGpQC.jpg",
+    "biography": "Robert John Downey Jr. là một nam diễn viên và nhà sản xuất người Mỹ."
+  },
+  {
+    "name": "Chris Evans",
+    "role": "Diễn viên",
+    "image": "https://image.tmdb.org/t/p/w500/3b01S11EqI9uSkaQCsbAUMqH9bd.jpg",
+    "biography": "Christopher Robert Evans là một nam diễn viên người Mỹ."
+  },
+  {
+    "name": "Anthony Russo",
+    "role": "Đạo diễn",
+    "image": "https://image.tmdb.org/t/p/w500/9c9h9NU6Y9uSkaQCsbAUMqH9bd.jpg",
+    "biography": "Anthony Russo là một đạo diễn, nhà sản xuất và biên kịch người Mỹ."
+  },
+  {
+    "name": "Joe Russo",
+    "role": "Đạo diễn",
+    "image": "https://image.tmdb.org/t/p/w500/6Y0T9P1bIn9GkecsKVMHsyzKQPS.jpg",
+    "biography": "Joseph Russo là một đạo diễn, nhà sản xuất và biên kịch người Mỹ."
+  }
+]

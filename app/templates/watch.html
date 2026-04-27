@@ -1,0 +1,255 @@
+{% extends "base.html" %}
+
+{% block title %}{{ movie.title }} - Black Space{% endblock %}
+
+{% block content %}
+<div class="movie-watch-container">
+    <div class="movie-watch-main">
+        <!-- Main Content (Video & Details) -->
+        <div class="movie-watch-content">
+            <div class="movie-video-container">
+                <div class="movie-video-wrapper">
+                    <iframe id="movieVideo" src="{{ movie.current_url }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="movie-details-section">
+                <h1 class="movie-watch-title">{{ movie.title }} {% if movie.current_ep %}- Tập {{ movie.current_ep }}{% endif %}</h1>
+                <div class="movie-meta-info">
+                    <span class="movie-meta-item">{{ movie.genre }}</span>
+                    <span class="movie-meta-separator">•</span>
+                    <span class="movie-meta-item">{{ movie.year or '2024' }}</span>
+                    <span class="movie-meta-separator">•</span>
+                    <span class="movie-meta-item">{{ movie.type }}</span>
+                </div>
+
+                <div class="movie-description">
+                    {{ movie.description }}
+                </div>
+
+                {% if movie.director %}
+                <div class="movie-extra-info">
+                    <strong>Đạo diễn:</strong> {{ movie.director }}
+                </div>
+                {% endif %}
+
+                {% if movie.cast %}
+                <div class="movie-extra-info">
+                    <strong>Diễn viên:</strong> {{ movie.cast }}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Comments Section -->
+            <div class="movie-comments-section">
+                <h3 class="comments-title">Bình luận</h3>
+                <div class="comments-list" id="commentsList">
+                    <p class="loading-comments">Đang tải bình luận...</p>
+                </div>
+
+                {% if current_user.is_authenticated %}
+                <div class="comment-form-container">
+                    <textarea class="comment-input" id="commentInput" placeholder="Viết bình luận của bạn..." rows="3"></textarea>
+                    <button class="comment-submit-btn" id="commentSubmitBtn">Gửi bình luận</button>
+                </div>
+                {% else %}
+                <div class="comment-login-prompt">
+                    <p>Vui lòng <a href="{{ url_for('auth.login') }}">đăng nhập</a> để bình luận</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Sidebar (Episodes & Watch Together) -->
+        <div class="movie-watch-sidebar">
+            {% if movie.type == 'Phim bộ' and movie.episodes %}
+            <div class="movie-episodes-section">
+                <h3 class="episodes-title">Danh sách tập phim</h3>
+                <div class="episodes-list">
+                    {% for episode in movie.episodes %}
+                    <div class="episode-item {{ 'active' if movie.current_ep == episode.episode_number else '' }}" 
+                         onclick="changeEpisode('{{ episode.url }}', '{{ episode.episode_number }}')">
+                        <div class="episode-number">{{ episode.episode_number }}</div>
+                        <div class="episode-info">
+                            <h4>{{ episode.title or 'Tập ' ~ episode.episode_number }}</h4>
+                            <p>Tập {{ episode.episode_number }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Watch Together Section -->
+            <div class="watch-together-section">
+                <h3>Xem chung với bạn bè</h3>
+                <p>Gửi link bên dưới để xem cùng lúc với bạn bè của bạn.</p>
+                <div class="watch-together-controls">
+                    <input type="text" id="roomLink" class="watch-room-link" readonly>
+                    <button type="button" id="copyRoomLinkBtn" class="watch-room-copy-btn">Copy</button>
+                </div>
+                <div id="watchTogetherStatus" style="font-size: 12px; margin-top: 10px; color: var(--text-muted);">
+                    Khởi tạo phòng...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const movieTitle = "{{ movie.title }}";
+    const movieId = "{{ movie.id }}";
+    const commentsList = document.getElementById('commentsList');
+    const commentInput = document.getElementById('commentInput');
+    const commentSubmitBtn = document.getElementById('commentSubmitBtn');
+    const movieVideo = document.getElementById('movieVideo');
+    const roomLinkInput = document.getElementById('roomLink');
+    const copyRoomLinkBtn = document.getElementById('copyRoomLinkBtn');
+    const watchTogetherStatus = document.getElementById('watchTogetherStatus');
+
+    const currentUsername = "{{ current_user.username if current_user.is_authenticated else 'Khách' }}";
+
+    let socket = null;
+    let roomId = null;
+
+    function getEmbedUrl(url) {
+        if (!url) return "";
+        if (url.includes("drive.google.com")) {
+            const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+            if (match) return `https://drive.google.com/file/d/${match[1]}/preview`;
+        }
+        if (url.includes("dood")) return url.replace("/d/", "/e/");
+        if (url.includes("ok.ru")) {
+            const id = url.split("/").pop();
+            return `https://ok.ru/videoembed/${id}`;
+        }
+        return url;
+    }
+
+    function changeEpisode(url, epNumber) {
+        const embedUrl = getEmbedUrl(url);
+        if (movieVideo) {
+            movieVideo.src = embedUrl;
+        }
+        
+        // Update URL and Title without reload
+        const newTitle = `{{ movie.title }} - Tập ${epNumber}`;
+        document.querySelector('.movie-watch-title').textContent = newTitle;
+        
+        // Update active state in sidebar
+        document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        if (socket && roomId) {
+            socket.emit('sync_video', {
+                room: roomId,
+                type: 'change_source',
+                url: embedUrl,
+            });
+        }
+    }
+
+    function loadComments() {
+        fetch(`/api/comments/${movieId}`)
+            .then(response => response.json())
+            .then(comments => {
+                commentsList.innerHTML = '';
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<p class="no-comments">Chưa có bình luận nào. Hãy là người đầu tiên bình luận!</p>';
+                    return;
+                }
+                comments.forEach(comment => {
+                    const commentItem = document.createElement('div');
+                    commentItem.className = 'comment-item';
+                    commentItem.innerHTML = `
+                        <div class="comment-avatar">
+                            <img src="${comment.avatar || '/static/images/default_avatar.svg'}" alt="${comment.username}">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-username">${comment.username}</span>
+                                <span class="comment-time">${comment.created_at}</span>
+                            </div>
+                            <div class="comment-text">${escapeHtml(comment.content)}</div>
+                        </div>
+                    `;
+                    commentsList.appendChild(commentItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading comments:', error);
+                commentsList.innerHTML = '<p class="no-comments">Không thể tải bình luận</p>';
+            });
+    }
+
+    if (commentSubmitBtn) {
+        commentSubmitBtn.addEventListener('click', function () {
+            const content = commentInput.value.trim();
+            if (!content) return;
+
+            commentSubmitBtn.disabled = true;
+            fetch('/api/comments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ movie_id: movieId, content: content })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) alert('Lỗi: ' + data.error);
+                    else {
+                        commentInput.value = '';
+                        loadComments();
+                    }
+                })
+                .finally(() => { commentSubmitBtn.disabled = false; });
+        });
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // --- Watch together ---
+    function initWatchTogether() {
+        if (typeof io === 'undefined') return;
+
+        socket = io();
+        const urlParams = new URLSearchParams(window.location.search);
+        roomId = urlParams.get('room') || `movie-${movieId}`;
+
+        if (roomLinkInput) {
+            const url = new URL(window.location.href);
+            url.searchParams.set('room', roomId);
+            roomLinkInput.value = url.toString();
+        }
+
+        if (copyRoomLinkBtn) {
+            copyRoomLinkBtn.addEventListener('click', () => {
+                roomLinkInput.select();
+                document.execCommand('copy');
+                watchTogetherStatus.textContent = 'Đã sao chép link phòng!';
+            });
+        }
+
+        socket.on('connect', () => {
+            watchTogetherStatus.textContent = 'Đã kết nối phòng xem chung.';
+            socket.emit('join_room', { room: roomId, user: currentUsername });
+        });
+
+        socket.on('sync_video', (data) => {
+            if (data.type === 'change_source' && data.url && movieVideo) {
+                movieVideo.src = data.url;
+            }
+        });
+    }
+
+    loadComments();
+    initWatchTogether();
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="auth-container auth-light">
+  <div class="auth-box">
+    <div class="auth-top">
+      <div class="auth-logo">🎬</div>
+      <div>
+        <h3 class="auth-title">BlackSpace</h3>
+        <div class="auth-sub">Xem phim chất lượng cao — mọi lúc, mọi nơi</div>
+      </div>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="success-msg">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" autocomplete="off">
+      <div class="form-group">
+        <label class="form-label">Tên đăng nhập</label>
+        <input class="form-control" type="text" name="username" placeholder="Nhập tên đăng nhập" required autofocus autocomplete="username">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mật khẩu</label>
+        <input class="form-control" type="password" name="password" placeholder="Nhập mật khẩu" required autocomplete="current-password">
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+        <label style="font-size:13px;color:var(--muted)"><input type="checkbox" name="remember"> Ghi nhớ</label>
+        <a href="{{ url_for('auth.reset_password') }}" class="switch-text">Quên mật khẩu?</a>
+      </div>
+
+      <div style="margin-top:16px">
+        <button type="submit" class="btn-submit">Đăng nhập</button>
+      </div>
+
+      <div class="divider">Hoặc</div>
+
+      <div style="display:flex;gap:10px">
+        <a href="{{ url_for('auth.register') }}" class="social-btn">Tạo tài khoản mới</a>
+      </div>
+    </form>
+
+    <div class="switch-text" style="margin-top:18px">Bằng việc đăng nhập bạn đồng ý với <a href="#">Điều khoản</a> & <a href="#">Chính sách</a>.</div>
+  </div>
+</div>
+{% endblock %}

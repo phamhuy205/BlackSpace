@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h2 class="mb-0">🎥 Trợ lý AI Black Space</h2>
+                    <p class="mb-0 opacity-75">Hỏi bất cứ phim gì bạn thích!</p>
+                </div>
+                <div class="card-body p-4 bg-light">
+                    <!-- Chat box display -->
+                    <div id="chatBox" class="mb-4 p-3 bg-white rounded shadow-sm" style="min-height: 200px; max-height: 400px; overflow-y: auto; border: 1px solid #eee; font-size: 1.1rem; line-height: 1.6;">
+                        <div class="text-muted italic">Sẵn sàng phục vụ bạn... 🍿</div>
+                        {% if result %}
+                            <div class="mt-3 p-2 bg-light rounded border-start border-primary border-4">
+                                <strong>AI:</strong> {{ result|safe }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Input area -->
+                    <div class="input-group mb-3">
+                        <textarea id="chatInput" class="form-control" rows="2" placeholder="Ví dụ: Tìm cho tôi phim hành động siêu anh hùng..." aria-label="Nội dung câu hỏi"></textarea>
+                        <button class="btn btn-primary px-4" type="button" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i> Gửi
+                        </button>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between text-muted small">
+                        <span>💡 Tip: Thử hỏi "Phim kinh dị hay" hoặc "Phim về vũ trụ"</span>
+                        <span id="status"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+#chatBox {
+    white-space: pre-wrap;
+}
+.typing {
+    border-right: 2px solid #007bff;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+</style>
+
+<script>
+async function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const chatBox = document.getElementById("chatBox");
+    const status = document.getElementById("status");
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // Clear and show loading
+    chatBox.innerHTML = `<div class="mb-2"><strong>Bạn:</strong> ${message}</div><hr>`;
+    chatBox.innerHTML += `<div id="aiResponse"><strong>AI:</strong> <span class="typing">Đang suy nghĩ...</span></div>`;
+    input.value = "";
+    status.innerText = "AI đang xử lý...";
+
+    try {
+        const res = await fetch("/api/ai_chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await res.json();
+        const aiResponseElement = document.getElementById("aiResponse");
+        
+        // Remove typing effect and placeholder
+        aiResponseElement.innerHTML = "<strong>AI:</strong> ";
+        
+        if (data.reply) {
+            typeEffect(data.reply, aiResponseElement);
+        } else {
+            aiResponseElement.innerHTML += "Xin lỗi, mình gặp chút lỗi nhỏ. Thử lại sau nhé!";
+        }
+        status.innerText = "";
+    } catch (error) {
+        console.error("AI Error:", error);
+        document.getElementById("aiResponse").innerHTML = "<strong>AI:</strong> Lỗi kết nối máy chủ rồi 😅";
+        status.innerText = "";
+    }
+}
+
+function typeEffect(text, element) {
+    let i = 0;
+    const span = document.createElement("span");
+    element.appendChild(span);
+    
+    function type() {
+        if (i < text.length) {
+            // Chuyển đổi markdown đơn giản sang HTML (nếu có)
+            let char = text.charAt(i);
+            span.innerHTML += char === '\n' ? '<br>' : char;
+            i++;
+            setTimeout(type, 10); // Tốc độ gõ chữ
+        } else {
+            // Sau khi gõ xong, render lại toàn bộ HTML nếu có markdown cơ bản
+            let formatted = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+            span.innerHTML = formatted;
+        }
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    type();
+}
+
+// Cho phép nhấn Enter để gửi
+document.getElementById("chatInput").addEventListener("keypress", function(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+</script>
+{% endblock %}

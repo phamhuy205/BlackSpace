@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Trang cá nhân - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="profile-page section-container">
+    <div class="profile-header">
+        <div class="profile-avatar-container">
+            <img src="{{ user.avatar or '/static/images/default_avatar.svg' }}" alt="{{ user.username }}" id="profileAvatarImg">
+            <button class="edit-avatar-btn" id="editProfileBtn">✏️ Chỉnh sửa</button>
+        </div>
+        <div class="profile-user-info">
+            <h1 class="profile-username" id="displayUsername">{{ user.username }}</h1>
+            <p class="profile-email">{{ user.email }}</p>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Chỉnh sửa trang cá nhân</h2>
+            <div class="form-group">
+                <label for="inputUsername">Tên người dùng:</label>
+                <input type="text" id="inputUsername" value="{{ user.username }}">
+            </div>
+            
+            <div class="form-group">
+                <label>Ảnh đại diện:</label>
+                <div class="avatar-edit-options">
+                    <div class="option">
+                        <label for="inputAvatarFile" class="file-label">📁 Chọn ảnh từ máy...</label>
+                        <input type="file" id="inputAvatarFile" accept="image/*" style="display: none;">
+                        <span id="fileNameDisplay" style="font-size: 12px; color: var(--text-muted);">Chưa chọn file</span>
+                    </div>
+                    <div class="separator-text">hoặc dùng link ảnh:</div>
+                    <div class="option">
+                        <input type="text" id="inputAvatarUrl" placeholder="https://..." value="{{ user.avatar if 'static' not in user.avatar else '' }}">
+                    </div>
+                </div>
+            </div>
+            
+            <button id="saveProfileBtn" class="btn btn-primary">Lưu thay đổi</button>
+        </div>
+    </div>
+
+    <div class="profile-content">
+        <div class="profile-section">
+            <h2 class="section-title">Danh sách phim yêu thích ({{ favorites|length }})</h2>
+            <div class="movies">
+                {% if favorites %}
+                    {% for m in favorites %}
+                    <div class="movie">
+                        <a href="{{ url_for('main.info', title=m.title) }}" class="movie-link-wrapper">
+                            <img src="{{ m.poster }}" alt="{{ m.title }}" class="movie-poster">
+                        </a>
+                        <div class="movie-info">
+                            <h3 class="movie-title">{{ m.title }}</h3>
+                            <a href="{{ url_for('main.watch', title=m.title) }}" class="watch-btn">▶ Xem ngay</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="empty-msg">Chưa có phim yêu thích nào.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="profile-section">
+            <h2 class="section-title">Lịch sử xem phim</h2>
+            <div class="history-list">
+                {% if history %}
+                    {% for h in history %}
+                    <div class="history-item">
+                        <img src="{{ h.movie.poster }}" alt="{{ h.movie.title }}" class="history-poster">
+                        <div class="history-info">
+                            <h4 class="history-title">{{ h.movie.title }}</h4>
+                            <p class="history-time">Đã xem lúc: {{ h.watched_at.strftime('%d/%m/%Y %H:%M') }}</p>
+                        </div>
+                        <a href="{{ url_for('main.watch', title=h.movie.title) }}" class="btn btn-secondary">Xem lại</a>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="empty-msg">Chưa có lịch sử xem phim.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const modal = document.getElementById("editProfileModal");
+    const btn = document.getElementById("editProfileBtn");
+    const span = document.getElementsByClassName("close-modal")[0];
+    const saveBtn = document.getElementById("saveProfileBtn");
+    const fileInput = document.getElementById("inputAvatarFile");
+    const fileNameDisplay = document.getElementById("fileNameDisplay");
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    fileInput.onchange = function() {
+        if (this.files.length > 0) {
+            fileNameDisplay.textContent = this.files[0].name;
+        } else {
+            fileNameDisplay.textContent = "Chưa chọn file";
+        }
+    }
+
+    saveBtn.onclick = function() {
+        const username = document.getElementById("inputUsername").value;
+        const avatarUrl = document.getElementById("inputAvatarUrl").value;
+        const avatarFile = fileInput.files[0];
+
+        const formData = new FormData();
+        formData.append("username", username);
+        
+        if (avatarFile) {
+            formData.append("avatar_file", avatarFile);
+        } else if (avatarUrl) {
+            formData.append("avatar", avatarUrl);
+        }
+
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Đang lưu...";
+
+        fetch('/api/profile/update', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById("displayUsername").textContent = data.username;
+                document.getElementById("profileAvatarImg").src = data.avatar;
+                modal.style.display = "none";
+            }
+        })
+        .finally(() => {
+            saveBtn.disabled = false;
+            saveBtn.textContent = "Lưu thay đổi";
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,60 @@
+TỔNG QUAN CHI TIẾT DỰ ÁN BLACK SPACE
+====================================
+
+1. Ý TƯỞNG VÀ CHỦ ĐỀ (DESIGN PHILOSOPHY)
+---------------------------------------
+- Tên dự án: Black Space (BlackSpacePro).
+- Chủ đề: "The Infinite Abyss" (Hố đen vô tận).
+- Phong cách thiết kế: Deep Dark kết hợp Neon Nebula. Sử dụng hiệu ứng kính mờ (Glassmorphism), màu nền đen sâu (#020617) và các điểm nhấn màu Cyan/Purple để tạo cảm giác không gian vũ trụ, công nghệ cao và tương lai.
+
+2. CẤU TRÚC KỸ THUẬT (TECH STACK)
+---------------------------------
+- Backend: Flask (Python 3.13).
+- Real-time: Flask-SocketIO (xử lý xem chung, thông báo).
+- Database: SQLAlchemy với SQLite (file users.db).
+- Authentication: Flask-Login & Flask-Bcrypt (mã hóa mật khẩu).
+- AI Integration: Google Generative AI (Gemini) để hỗ trợ tìm kiếm và trò chuyện.
+- Frontend: HTML5, CSS3 (Vanilla CSS), JavaScript (Vanilla JS).
+
+3. CƠ SỞ DỮ LIỆU (MODELS)
+-------------------------
+- User: Lưu thông tin người dùng (username, email, password hash, avatar, is_admin). Có quan hệ với phim yêu thích và lịch sử xem.
+- Movie: Lưu thông tin phim (tiêu đề, thể loại, năm, mô tả, đạo diễn, diễn viên, poster).
+- Episode: Lưu thông tin các tập phim (số tập, URL video, tiêu đề tập). Một phim có thể có nhiều tập.
+- Comment: Lưu bình luận của người dùng trên từng phim.
+- WatchHistory: Lưu lịch sử các phim người dùng đã xem.
+- Favorites: Bảng trung gian quản lý danh sách phim yêu thích của người dùng.
+
+4. CÁC TÍNH NĂNG CHÍNH (FEATURES)
+---------------------------------
+A. Hệ thống Phim:
+   - Duyệt phim theo danh mục (Phim lẻ, Phim bộ, Phim chiếu rạp).
+   - Tìm kiếm phim thông minh.
+   - Xem chi tiết phim, danh sách tập phim và thông tin diễn viên/đạo diễn.
+   - Xem phim qua Iframe hỗ trợ nhiều nguồn (Google Drive, DoodStream, Ok.ru...).
+
+B. Tính năng Người dùng:
+   - Đăng ký/Đăng nhập và quản lý hồ sơ (đổi avatar, thông tin).
+   - Danh sách phim yêu thích (Favorites).
+   - Lịch sử xem phim (Watch History).
+   - Hệ thống bình luận dưới mỗi bộ phim.
+
+C. Xem chung (Watch Together):
+   - Sử dụng Socket.io để đồng bộ hóa phòng xem.
+   - Mỗi phim/phòng có một roomId riêng.
+   - Đồng bộ hóa việc chuyển tập phim giữa các thành viên trong cùng phòng.
+   - Hỗ trợ kết nối qua mạng LAN hoặc Ngrok nhờ cấu hình CORS và Host 0.0.0.0.
+
+D. Trợ lý AI (Gemini AI):
+   - Tích hợp chatbot AI để tư vấn phim, trả lời câu hỏi của người dùng ngay trên giao diện web.
+
+E. Quản trị (Admin Dashboard):
+   - Giao diện dành riêng cho Admin để thêm, sửa, xóa phim và tập phim.
+   - Quản lý người dùng và các phản hồi.
+
+5. NHẬT KÝ THAY ĐỔI CỦA GEMINI CLI
+----------------------------------
+- Cập nhật app/__init__.py: Thêm `cors_allowed_origins="*"` cho SocketIO để hỗ trợ kết nối từ xa/mạng LAN.
+- Cập nhật run.py: Thay đổi host thành `0.0.0.0` và port `5000` để cho phép truy cập từ thiết bị khác trong cùng mạng Wi-Fi.
+- Tạo logic.txt: Lưu trữ toàn bộ tài liệu về cấu trúc và thay đổi của dự án.
+- Phân tích mã nguồn: Đã đọc và hiểu toàn bộ cấu trúc Models, Routes và Templates để hỗ trợ phát triển tiếp.

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if page_title %}{{ page_title }} - {% endif %}Black Space
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+{% if not page_title or page_title == 'Trang chủ' %}
+    {% if featured_movie %}
+    <section class="hero" style="background-image: linear-gradient(to right, var(--bg-dark) 20%, transparent 100%), url('https://image.tmdb.org/t/p/original/7RyB7jV7RzwQC6p6z97dbvL6o8p.jpg');">
+      <div class="hero-content-wrapper">
+        <div class="hero-poster-container">
+            <img src="{{ featured_movie.poster }}" alt="{{ featured_movie.title }}" class="hero-movie-poster">
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">{{ featured_movie.title }}</h1>
+            <p class="hero-description">{{ featured_movie.description }}</p>
+            <div class="hero-btns">
+              <a href="{{ url_for('main.watch', title=featured_movie.title) }}" class="btn btn-primary">▶ Xem ngay</a>
+              <a href="{{ url_for('main.info', title=featured_movie.title) }}" class="btn btn-secondary">ⓘ Thông tin thêm</a>
+            </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+{% endif %}
+
+<div class="section-container">
+  {% if page_title %}
+  <h2 class="page-title">{{ page_title }}</h2>
+  {% else %}
+  <h2 class="page-title">Phim đề xuất</h2>
+  {% endif %}
+
+  <div class="movies">
+    {% if movies %}
+    {% for m in movies %}
+    <div class="movie">
+      <a href="{{ url_for('main.info', title=m.title) }}" class="movie-link-wrapper">
+        <img src="{{ m.poster }}" alt="{{ m.title }}" class="movie-poster">
+      </a>
+      <div class="movie-info">
+        {% if m.isNew %}
+        <span class="badge new">Mới</span>
+        {% endif %}
+        <h3 class="movie-title">{{ m.title }}</h3>
+        <p class="movie-genre">{{ m.genre }}</p>
+        <div class="movie-actions-btns">
+            <a href="{{ url_for('main.watch', title=m.title) }}" class="watch-btn">▶ Xem</a>
+            <a href="{{ url_for('main.info', title=m.title) }}" class="info-btn">ⓘ Thông tin</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="no-movies">
+      <p>Không tìm thấy phim nào.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

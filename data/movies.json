@@ -1,0 +1,169 @@
+[
+  {
+    "title": "Avengers: Endgame",
+    "genre": "Hành động",
+    "category": "Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2019,
+    "url": "https://www.youtube.com/embed/TcMBFSGVi1c",
+    "poster": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    "description": "Sau những sự kiện thảm khốc trong Avengers: Infinity War, vũ trụ đang rơi vào cảnh đổ nát. Với sự giúp đỡ của những đồng minh còn sót lại, biệt đội Avengers tập hợp một lần nữa để đảo ngược hành động của Thanos và khôi phục sự cân bằng cho vũ trụ.",
+    "isNew": false,
+    "director": "Anthony Russo, Joe Russo",
+    "cast": "Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson"
+  },
+  {
+    "title": "The Conjuring",
+    "genre": "Kinh dị",
+    "category": "Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2013,
+    "url": "https://www.youtube.com/embed/k10ETZ41q5o",
+    "poster": "https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg",
+    "description": "Cặp đôi Warren điều tra vụ ám sát rùng rợn.",
+    "isNew": false,
+    "director": "James Wan",
+    "cast": "Vera Farmiga, Patrick Wilson, Lili Taylor, Ron Livingston"
+  },
+  {
+    "title": "Interstellar",
+    "genre": "Khoa học viễn tưởng",
+    "category": "Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2014,
+    "url": "https://www.youtube.com/embed/zSWdZVtXT7E",
+    "poster": "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+    "description": "Một nhóm phi hành gia vượt qua hố đen để cứu nhân loại.",
+    "isNew": false,
+    "director": "Christopher Nolan",
+    "cast": "Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin"
+  },
+  {
+    "title": "Spider-Man: No Way Home",
+    "genre": "Hành động",
+    "category": "Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2021,
+    "url": "https://www.youtube.com/embed/JfVOs4VSpmA",
+    "poster": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+    "description": "Peter Parker đối mặt với đa vũ trụ hỗn loạn.",
+    "isNew": false,
+    "director": "Jon Watts",
+    "cast": "Tom Holland, Zendaya, Benedict Cumberbatch, Jacob Batalon"
+  },
+  {
+    "title": "Your Name",
+    "genre": "Tình cảm",
+    "category": "Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2016,
+    "url": "https://www.youtube.com/embed/xU47nhruN-Q",
+    "poster": "https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg",
+    "description": "Hai thiếu niên bí ẩn hoán đổi thân xác và tìm cách gặp nhau.",
+    "isNew": false,
+    "director": "Makoto Shinkai",
+    "cast": "Ryunosuke Kamiki, Mone Kamishiraishi, Ryo Narita, Aoi Yuki"
+  },
+  {
+    "title": "CHAINSAW MAN – THE MOVIE: REZE ARC",
+    "genre": "Hành động",
+    "category": "Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2025,
+    "url": "https://www.youtube.com/embed/tAzAhDNdehs",
+    "poster": "https://image.tmdb.org/t/p/w1280/6Y0T9P1bIn9GkecsKVMHsyzKQPS.jpg",
+    "description": "Câu chuyện tiếp theo về Denji và tình yêu bất ngờ với Reze.",
+    "isNew": false,
+    "director": "Ryu Nakayama",
+    "cast": "Kikunosuke Toya, Reina Ueda"
+  },
+  {
+    "title": "Demon Slayer: Kimetsu no Yaiba Infinity Castle",
+    "genre": "Hành động",
+    "category": "PPhim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2025,
+    "url": "https://youtu.be/embed/seX6WMONCkU",
+    "poster": "https://image.tmdb.org/t/p/original/wjtxgr7yHM8aTVOhlUSycfVTspI.jpg",
+    "description": "Trận chiến cuối cùng tại Vô Hạn Thành.",
+    "isNew": false,
+    "director": "Haruo Sotozaki",
+    "cast": "Natsuki Hanae, Akari Kito"
+  },
+  {
+    "title": "High & Low The Worst X(2022)",
+    "genre": "Hành động",
+    "category": " Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2022,
+    "url": "https://drive.google.com/file/d/1ex6AW8qEEI_zcukoVAMDzywYhkcF6U_w/preview",
+    "poster": "https://media.themoviedb.org/t/p/w440_and_h660_face/sq98RH5ILnZlADROq6fcQIq77pg.jpg",
+    "description": "Cuộc chiến giữa các trường trung học bùng nổ.",
+    "isNew": false,
+    "director": "Daisuke Ninomiya",
+    "cast": "Kazuma Kawamura, Hokuto Yoshino"
+  },
+  {
+    "title": "JoJo Stell Ball Run",
+    "genre": "Khoa học viễn tưởng",
+    "category": "phim bộ",
+    "type": "Phim bộ",
+    "year": 2026,
+    "url": "https://drive.google.com/file/d/1EcYGKq0q0sP0mRDS8_0WSLusXyhhhF8O/view?usp=sharing",
+    "poster": "https://media.themoviedb.org/t/p/w440_and_h660_face/1HXdeK67pYSAukeZDhS3GJU8nIC.jpg",
+    "description": "Cuộc đua xuyên nước Mỹ đầy kịch tính.",
+    "isNew": false,
+    "episodes": [
+      {
+        "episode": 1,
+        "title": "Tập 1: Tell Ball Run",
+        "url": "https://drive.google.com/file/d/1EcYGKq0q0sP0mRDS8_0WSLusXyhhhF8O/view?usp=sharing",
+        "description": "Bắt đầu cuộc đua vĩ đại."
+      }
+    ]
+  },
+  {
+    "title": "Stranger Things",
+    "genre": "Khoa học viễn tưởng",
+    "category": "phim bộ",
+    "type": "Phim bộ",
+    "year": 2016,
+    "url": "https://www.youtube.com/embed/b9EkMc79ZSU",
+    "poster": "https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
+    "description": "Những bí ẩn đáng sợ tại thị trấn Hawkins.",
+    "isNew": false,
+    "episodes": [
+      {
+        "episode": 1,
+        "title": "Tập 1: The Vanishing of Will Byers",
+        "url": "https://www.youtube.com/embed/b9EkMc79ZSU",
+        "description": "Một cậu bé biến mất một cách bí ẩn."
+      },
+      {
+        "episode": 2,
+        "title": "Tập 2: The Weirdo on Maple Street",
+        "url": "https://www.youtube.com/embed/TcMBFSGVi1c",
+        "description": "Nhóm bạn phát hiện một cô gái bí ẩn."
+      }
+    ]
+  },
+  {
+    "title": "Game of Thrones",
+    "genre": "Phiêu lưu",
+    "category": "phim bộ",
+    "type": "Phim bộ",
+    "year": 2011,
+    "url": "https://www.youtube.com/embed/BpJYNVhGf1s",
+    "poster": "https://image.tmdb.org/t/p/w500/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg",
+    "description": "Cuộc chiến giành quyền lực giữa các dòng họ quý tộc.",
+    "isNew": false,
+    "episodes": [
+      {
+        "episode": 1,
+        "title": "Tập 1: Winter Is Coming",
+        "url": "https://www.youtube.com/embed/BpJYNVhGf1s",
+        "description": "Chúa tể Eddard Stark nhận lời mời đến King's Landing."
+      }
+    ]
+  }
+]

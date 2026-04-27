@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="auth-container auth-light">
+  <div class="auth-box">
+    <div class="auth-top">
+      <div class="auth-logo">BS</div>
+      <div>
+        <h3 class="auth-title">BlackSpace</h3>
+        <div class="auth-sub">Tham gia để khám phá thế giới phim ảnh</div>
+      </div>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="error-msg">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" autocomplete="off">
+      <div class="form-group">
+        <label class="form-label">Tên đăng nhập</label>
+        <input class="form-control" type="text" name="username" placeholder="Nhập tên đăng nhập" required autocomplete="username">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-control" type="email" name="email" placeholder="Nhập email" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mật khẩu</label>
+        <input class="form-control" type="password" name="password" placeholder="Tạo mật khẩu" required autocomplete="new-password">
+        <div class="help-text">Tối thiểu 6 ký tự</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nhập lại mật khẩu</label>
+        <input class="form-control" type="password" name="confirm_password" placeholder="Nhập lại mật khẩu" required autocomplete="new-password">
+      </div>
+
+      <div style="margin-top:8px">
+        <button type="submit" class="btn-submit">Tạo tài khoản</button>
+      </div>
+
+      <div class="switch-text" style="margin-top:12px">Bạn đã có tài khoản? <a href="{{ url_for('auth.login') }}">Đăng nhập</a></div>
+    </form>
+
+    <div class="help-text" style="margin-top:12px">Miễn phí dùng thử. Hủy bất kỳ lúc nào.</div>
+  </div>
+</div>
+{% endblock %}

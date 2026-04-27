@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Black Space{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <header id="mainHeader">
+        <div class="header-container">
+            <a href="{{ url_for('main.home') }}" class="logo">🎬 Black Space</a>
+            
+            <div class="search-container">
+                <form action="{{ url_for('main.search') }}" method="GET" class="search-form" id="searchForm">
+                    <input type="text" name="q" placeholder="Tìm tên phim, diễn viên..." class="search-input" id="searchInput" autocomplete="off" value="{{ request.args.get('q', '') }}">
+                    <button type="submit" class="search-btn">🔍</button>
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </form>
+            </div>
+
+            <nav class="main-nav">
+                <a href="{{ url_for('main.home') }}" class="nav-link">Trang chủ</a>
+                <a href="{{ url_for('main.phim_moi') }}" class="nav-link">Phim mới</a>
+                <a href="{{ url_for('main.phim_chieu_rap') }}" class="nav-link">Phim chiếu rạp</a>
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Thể loại <i class="arrow-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('main.the_loai', genre='Hành động') }}">Hành động</a>
+                        <a href="{{ url_for('main.the_loai', genre='Kinh dị') }}">Kinh dị</a>
+                        <a href="{{ url_for('main.the_loai', genre='Khoa học viễn tưởng') }}">Khoa học viễn tưởng</a>
+                        <a href="{{ url_for('main.the_loai', genre='Tình cảm') }}">Tình cảm</a>
+                        <a href="{{ url_for('main.the_loai', genre='Phiêu lưu') }}">Phiêu lưu</a>
+                    </div>
+                </div>
+                <a href="{{ url_for('main.phim_le') }}" class="nav-link">Phim lẻ</a>
+                <a href="{{ url_for('main.phim_bo') }}" class="nav-link">Phim bộ</a>
+            </nav>
+            <nav class="user-nav">
+                {% if current_user.is_authenticated %}
+                {% if current_user.is_admin %}
+                <a href="{{ url_for('admin.dashboard') }}" class="nav-link"
+                    style="color: #e50914; border: 1px solid #e50914;">Admin</a>
+                {% endif %}
+                <a href="{{ url_for('profile.profile') }}" class="nav-link user-link">Trang cá nhân</a>
+                <a href="{{ url_for('auth.logout') }}" class="nav-link logout-link">Đăng xuất</a>
+                {% else %}
+                <a href="{{ url_for('auth.login') }}" class="nav-link">Đăng nhập</a>
+                <a href="{{ url_for('auth.register') }}" class="nav-link register-link">Đăng ký</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Black Space. All rights reserved.</p>
+    </footer>
+
+    <!-- Socket.IO client for realtime features (xem chung, chat, ...) -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget-container" id="chatWidget">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div>
+                    <h3 class="chat-header-title">🎬 Trợ lý AI</h3>
+                    <p class="chat-header-subtitle">Hỏi tôi về phim nhé!</p>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn" title="Đóng">×</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <div class="message-bubble">
+                        Xin chào! Tôi là trợ lý AI của Black Space. Tôi có thể giúp bạn tìm phim, đề xuất phim, hoặc
+                        giới thiệu về các bộ phim. Bạn muốn hỏi gì?
+                    </div>
+                    <div class="message-time">Bây giờ</div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <textarea class="chat-input" id="chatInput" placeholder="Nhập câu hỏi của bạn..."
+                        rows="1"></textarea>
+                    <button class="chat-send-btn" id="chatSendBtn" title="Gửi">➤</button>
+                </div>
+            </div>
+        </div>
+        <div class="chat-bubble" id="chatBubble" title="Chat với AI">
+            <div class="chat-bubble-icon">💬</div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const header = document.getElementById('mainHeader');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Dropdown click handler
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdown = document.querySelector('.dropdown');
+
+            if (dropdownToggle && dropdown) {
+                dropdownToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+
+                // Close dropdown when clicking outside
+                window.addEventListener('click', function (e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            const chatWidget = document.getElementById('chatWidget');
+            const chatBubble = document.getElementById('chatBubble');
+            const chatWindow = document.getElementById('chatWindow');
+            const chatCloseBtn = document.getElementById('chatCloseBtn');
+            const chatMessages = document.getElementById('chatMessages');
+            const chatInput = document.getElementById('chatInput');
+            const chatSendBtn = document.getElementById('chatSendBtn');
+
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragStartY = 0;
+            let mouseDownX = 0;
+            let mouseDownY = 0;
+            let currentX = 0;
+            let currentY = 0;
+            let isOpen = false;
+
+            chatCloseBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleChat();
+            });
+
+            function toggleChat() {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    chatWindow.classList.add('open');
+                    chatInput.focus();
+                } else {
+                    chatWindow.classList.remove('open');
+                }
+            }
+
+            // Make chat bubble draggable
+            chatBubble.addEventListener('mousedown', function (e) {
+                if (e.target === chatBubble || e.target === chatBubble.querySelector('.chat-bubble-icon')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    mouseDownX = e.clientX;
+                    mouseDownY = e.clientY;
+
+                    const rect = chatWidget.getBoundingClientRect();
+                    dragStartX = e.clientX - rect.left;
+                    dragStartY = e.clientY - rect.top;
+
+                    isDragging = true;
+                    chatBubble.style.cursor = 'grabbing';
+                    chatWidget.style.userSelect = 'none';
+                }
+            });
+
+            document.addEventListener('mousemove', function (e) {
+                if (isDragging) {
+                    currentX = e.clientX - dragStartX;
+                    currentY = e.clientY - dragStartY;
+
+                    // Giới hạn trong viewport
+                    const maxX = window.innerWidth - chatBubble.offsetWidth;
+                    const maxY = window.innerHeight - chatBubble.offsetHeight;
+
+                    currentX = Math.max(0, Math.min(currentX, maxX));
+                    currentY = Math.max(0, Math.min(currentY, maxY));
+
+                    chatWidget.style.left = currentX + 'px';
+                    chatWidget.style.right = 'auto';
+                    chatWidget.style.bottom = 'auto';
+                    chatWidget.style.top = currentY + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', function (e) {
+                if (isDragging) {
+                    const dragDistance = Math.sqrt(
+                        Math.pow(e.clientX - mouseDownX, 2) +
+                        Math.pow(e.clientY - mouseDownY, 2)
+                    );
+
+                    isDragging = false;
+                    chatBubble.style.cursor = 'pointer';
+                    chatWidget.style.userSelect = 'auto';
+
+                    // If dragged less than 5 pixels, treat as click and toggle chat
+                    if (dragDistance < 5) {
+                        setTimeout(function () {
+                            toggleChat();
+                        }, 10);
+                    }
+                }
+            });
+
+            // Auto-resize textarea
+            chatInput.addEventListener('input', function () {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+            });
+
+            // Send message on Enter (Shift+Enter for new line)
+            chatInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            chatSendBtn.addEventListener('click', sendMessage);
+
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+
+                // Disable input
+                chatInput.disabled = true;
+                chatSendBtn.disabled = true;
+
+                // Add user message
+                addMessage(message, 'user');
+
+                // Clear input
+                chatInput.value = '';
+                chatInput.style.height = 'auto';
+
+                // Show loading
+                const loadingId = addLoadingMessage();
+
+                // Send to API
+                fetch('/api/ai_chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        removeLoadingMessage(loadingId);
+                        if (data.error) {
+                            addMessage('Xin lỗi, có lỗi xảy ra: ' + data.error, 'bot');
+                        } else {
+                            addMessage(data.reply, 'bot');
+                        }
+                    })
+                    .catch(error => {
+                        removeLoadingMessage(loadingId);
+                        addMessage('Xin lỗi, không thể kết nối với server. Vui lòng thử lại sau.', 'bot');
+                    })
+                    .finally(() => {
+                        // Re-enable input
+                        chatInput.disabled = false;
+                        chatSendBtn.disabled = false;
+                        chatInput.focus();
+                    });
+            }
+
+            function addMessage(text, type) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${type}`;
+
+                const bubble = document.createElement('div');
+                bubble.className = 'message-bubble';
+                bubble.textContent = text;
+
+                const time = document.createElement('div');
+                time.className = 'message-time';
+                time.textContent = getCurrentTime();
+
+                messageDiv.appendChild(bubble);
+                messageDiv.appendChild(time);
+                chatMessages.appendChild(messageDiv);
+
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function addLoadingMessage() {
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'chat-message bot';
+                loadingDiv.id = 'loading-' + Date.now();
+
+                const loadingBubble = document.createElement('div');
+                loadingBubble.className = 'chat-loading';
+                loadingBubble.innerHTML = `
+      <div class="chat-loading-dot"></div>
+      <div class="chat-loading-dot"></div>
+      <div class="chat-loading-dot"></div>
+    `;
+
+                loadingDiv.appendChild(loadingBubble);
+                chatMessages.appendChild(loadingDiv);
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                return loadingDiv.id;
+            }
+
+            function removeLoadingMessage(id) {
+                const loadingElement = document.getElementById(id);
+                if (loadingElement) {
+                    loadingElement.remove();
+                }
+            }
+
+            function getCurrentTime() {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                return `${hours}:${minutes}`;
+            }
+
+            // --- Autocomplete Logic ---
+            const searchInput = document.getElementById('searchInput');
+            const suggestionsBox = document.getElementById('searchSuggestions');
+            let debounceTimer;
+
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim();
+                clearTimeout(debounceTimer);
+
+                if (query.length < 2) {
+                    suggestionsBox.innerHTML = '';
+                    suggestionsBox.classList.remove('show');
+                    return;
+                }
+
+                debounceTimer = setTimeout(() => {
+                    fetch(`/api/suggestions?q=${encodeURIComponent(query)}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.length > 0) {
+                                suggestionsBox.innerHTML = data.map(item => `
+                                    <a href="${item.url}" class="suggestion-item">
+                                        <img src="${item.poster}" class="suggestion-poster" alt="${item.title}">
+                                        <div class="suggestion-info">
+                                            <p class="suggestion-title">${item.title}</p>
+                                        </div>
+                                    </a>
+                                `).join('');
+                                suggestionsBox.classList.add('show');
+                            } else {
+                                suggestionsBox.innerHTML = '';
+                                suggestionsBox.classList.remove('show');
+                            }
+                        });
+                }, 300); // Đợi 300ms sau khi dừng gõ mới gọi API
+            });
+
+            // Đóng gợi ý khi click ra ngoài
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                    suggestionsBox.classList.remove('show');
+                }
+            });
+
+            // Hiển thị lại gợi ý khi focus vào input nếu đã có text
+            searchInput.addEventListener('focus', function() {
+                if (suggestionsBox.innerHTML !== '') {
+                    suggestionsBox.classList.add('show');
+                }
+            });
+        })();
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+
+</html>

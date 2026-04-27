@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}{{ movie.title }} - Thông tin phim{% endblock %}
+
+{% block content %}
+<div class="movie-info-page">
+    <div class="movie-info-header" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), var(--bg-dark)), url('{{ movie.poster }}');">
+        <div class="movie-info-container">
+            <div class="movie-info-poster">
+                <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+                {% if current_user.is_authenticated %}
+                <button class="favorite-btn {% if is_favorite %}active{% endif %}" id="favoriteBtn" data-movie-id="{{ movie.id }}">
+                    <span class="heart-icon">❤</span>
+                </button>
+                {% endif %}
+            </div>
+            <div class="movie-info-details">
+                <h1 class="movie-info-title">{{ movie.title }}</h1>
+                <div class="movie-info-meta">
+                    <span class="meta-item">{{ movie.year }}</span>
+                    <span class="meta-separator">•</span>
+                    <span class="meta-item">{{ movie.genre }}</span>
+                    <span class="meta-separator">•</span>
+                    <span class="meta-item">{{ movie.type }}</span>
+                </div>
+                <div class="movie-info-actions">
+                    <a href="{{ url_for('main.watch', title=movie.title) }}" class="btn btn-primary">▶ Xem phim</a>
+                </div>
+                <div class="movie-info-description">
+                    <h3>Nội dung</h3>
+                    <p>{{ movie.description }}</p>
+                </div>
+                <div class="movie-info-crew">
+                    {% if movie.director %}
+                    <div class="crew-item">
+                        <strong>Đạo diễn:</strong> {{ movie.director }}
+                    </div>
+                    {% endif %}
+                    {% if movie.cast %}
+                    <div class="crew-item">
+                        <strong>Diễn viên:</strong> {{ movie.cast }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="movie-info-cast-section section-container">
+        <h2 class="page-title">Diễn viên & Đoàn làm phim</h2>
+        <div class="cast-list">
+            {% if actors %}
+                {% for actor in actors %}
+                <div class="cast-card">
+                    <img src="{{ actor.image }}" alt="{{ actor.name }}" class="cast-image">
+                    <div class="cast-info">
+                        <h4 class="cast-name">{{ actor.name }}</h4>
+                        <p class="cast-role">{{ actor.role }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">Thông tin đang được cập nhật...</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const favoriteBtn = document.getElementById('favoriteBtn');
+    if (favoriteBtn) {
+        favoriteBtn.addEventListener('click', function() {
+            const movieId = this.getAttribute('data-movie-id');
+            fetch('/api/favorite/toggle', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ movie_id: movieId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.is_favorite) {
+                        favoriteBtn.classList.add('active');
+                    } else {
+                        favoriteBtn.classList.remove('active');
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error toggling favorite:', error);
+            });
+        });
+    }
+</script>
+{% endblock %}

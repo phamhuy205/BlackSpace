@@ -5886,3 +5886,53 @@ NameError: name 'WatchHistory' is not defined
 2026-04-26 21:41:39,024 INFO [werkzeug] 127.0.0.1 - - [26/Apr/2026 21:41:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-04-26 21:41:50,371 INFO [werkzeug] 127.0.0.1 - - [26/Apr/2026 21:41:50] "GET /search?q=J HTTP/1.1" 200 -
 2026-04-26 21:41:50,383 INFO [werkzeug] 127.0.0.1 - - [26/Apr/2026 21:41:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-04-27 22:24:29,905 INFO [app] Found 11 movies in JSON. Syncing...
+2026-04-27 22:24:29,905 INFO [app] Found 11 movies in JSON. Syncing...
+2026-04-27 22:24:30,904 INFO [app] Creating new movie: Avengers: Endgame
+2026-04-27 22:24:30,904 INFO [app] Creating new movie: Avengers: Endgame
+2026-04-27 22:24:31,060 INFO [app] Creating new movie: The Conjuring
+2026-04-27 22:24:31,060 INFO [app] Creating new movie: The Conjuring
+2026-04-27 22:24:31,209 INFO [app] Creating new movie: Interstellar
+2026-04-27 22:24:31,209 INFO [app] Creating new movie: Interstellar
+2026-04-27 22:24:31,360 INFO [app] Creating new movie: Spider-Man: No Way Home
+2026-04-27 22:24:31,360 INFO [app] Creating new movie: Spider-Man: No Way Home
+2026-04-27 22:24:31,517 INFO [app] Creating new movie: Your Name
+2026-04-27 22:24:31,517 INFO [app] Creating new movie: Your Name
+2026-04-27 22:24:31,667 INFO [app] Creating new movie: CHAINSAW MAN – THE MOVIE: REZE ARC
+2026-04-27 22:24:31,667 INFO [app] Creating new movie: CHAINSAW MAN – THE MOVIE: REZE ARC
+2026-04-27 22:24:31,822 INFO [app] Creating new movie: Demon Slayer: Kimetsu no Yaiba Infinity Castle
+2026-04-27 22:24:31,822 INFO [app] Creating new movie: Demon Slayer: Kimetsu no Yaiba Infinity Castle
+2026-04-27 22:24:31,975 INFO [app] Creating new movie: High & Low The Worst X(2022)
+2026-04-27 22:24:31,975 INFO [app] Creating new movie: High & Low The Worst X(2022)
+2026-04-27 22:24:32,130 INFO [app] Creating new movie: JoJo Stell Ball Run
+2026-04-27 22:24:32,130 INFO [app] Creating new movie: JoJo Stell Ball Run
+2026-04-27 22:24:32,335 INFO [app] Creating new movie: Stranger Things
+2026-04-27 22:24:32,335 INFO [app] Creating new movie: Stranger Things
+2026-04-27 22:24:32,552 INFO [app] Creating new movie: Game of Thrones
+2026-04-27 22:24:32,552 INFO [app] Creating new movie: Game of Thrones
+2026-04-27 22:25:20,506 INFO [app] Found 11 movies in JSON. Syncing...
+2026-04-27 22:25:20,506 INFO [app] Found 11 movies in JSON. Syncing...
+2026-04-27 22:25:21,555 INFO [app] Creating new movie: Avengers: Endgame
+2026-04-27 22:25:21,555 INFO [app] Creating new movie: Avengers: Endgame
+2026-04-27 22:25:21,725 INFO [app] Creating new movie: The Conjuring
+2026-04-27 22:25:21,725 INFO [app] Creating new movie: The Conjuring
+2026-04-27 22:25:21,907 INFO [app] Creating new movie: Interstellar
+2026-04-27 22:25:21,907 INFO [app] Creating new movie: Interstellar
+2026-04-27 22:25:22,064 INFO [app] Creating new movie: Spider-Man: No Way Home
+2026-04-27 22:25:22,064 INFO [app] Creating new movie: Spider-Man: No Way Home
+2026-04-27 22:25:22,239 INFO [app] Creating new movie: Your Name
+2026-04-27 22:25:22,239 INFO [app] Creating new movie: Your Name
+2026-04-27 22:25:22,400 INFO [app] Creating new movie: CHAINSAW MAN – THE MOVIE: REZE ARC
+2026-04-27 22:25:22,400 INFO [app] Creating new movie: CHAINSAW MAN – THE MOVIE: REZE ARC
+2026-04-27 22:25:22,564 INFO [app] Creating new movie: Demon Slayer: Kimetsu no Yaiba Infinity Castle
+2026-04-27 22:25:22,564 INFO [app] Creating new movie: Demon Slayer: Kimetsu no Yaiba Infinity Castle
+2026-04-27 22:25:22,721 INFO [app] Creating new movie: High & Low The Worst X(2022)
+2026-04-27 22:25:22,721 INFO [app] Creating new movie: High & Low The Worst X(2022)
+2026-04-27 22:25:22,877 INFO [app] Creating new movie: JoJo Stell Ball Run
+2026-04-27 22:25:22,877 INFO [app] Creating new movie: JoJo Stell Ball Run
+2026-04-27 22:25:23,093 INFO [app] Creating new movie: Stranger Things
+2026-04-27 22:25:23,093 INFO [app] Creating new movie: Stranger Things
+2026-04-27 22:25:23,310 INFO [app] Creating new movie: Game of Thrones
+2026-04-27 22:25:23,310 INFO [app] Creating new movie: Game of Thrones
+2026-04-27 22:25:23,523 INFO [app] Movies synced successfully!
+2026-04-27 22:25:23,523 INFO [app] Movies synced successfully!

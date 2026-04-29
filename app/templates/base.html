@@ -41,10 +41,18 @@
             <nav class="user-nav">
                 {% if current_user.is_authenticated %}
                 {% if current_user.is_admin %}
-                <a href="{{ url_for('admin.dashboard') }}" class="nav-link"
-                    style="color: #e50914; border: 1px solid #e50914;">Admin</a>
-                {% endif %}
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" style="color: #e50914; border: 1px solid #e50914; padding: 5px 15px; border-radius: 20px;">
+                        Admin <i class="arrow-down" style="border-top-color: #e50914;"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('profile.profile') }}">Trang cá nhân</a>
+                        <a href="{{ url_for('admin.dashboard') }}">Quản trị hệ thống</a>
+                    </div>
+                </div>
+                {% else %}
                 <a href="{{ url_for('profile.profile') }}" class="nav-link user-link">Trang cá nhân</a>
+                {% endif %}
                 <a href="{{ url_for('auth.logout') }}" class="nav-link logout-link">Đăng xuất</a>
                 {% else %}
                 <a href="{{ url_for('auth.login') }}" class="nav-link">Đăng nhập</a>
@@ -118,24 +126,34 @@
                 }
             });
 
-            // Dropdown click handler
-            const dropdownToggle = document.querySelector('.dropdown-toggle');
-            const dropdown = document.querySelector('.dropdown');
+            // Dropdown click handler for all dropdowns
+            const dropdowns = document.querySelectorAll('.dropdown');
 
-            if (dropdownToggle && dropdown) {
-                dropdownToggle.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    dropdown.classList.toggle('show');
-                });
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                if (toggle) {
+                    toggle.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
 
-                // Close dropdown when clicking outside
-                window.addEventListener('click', function (e) {
+                        // Close other dropdowns
+                        dropdowns.forEach(d => {
+                            if (d !== dropdown) d.classList.remove('show');
+                        });
+
+                        dropdown.classList.toggle('show');
+                    });
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            window.addEventListener('click', function (e) {
+                dropdowns.forEach(dropdown => {
                     if (!dropdown.contains(e.target)) {
                         dropdown.classList.remove('show');
                     }
                 });
-            }
+            });
 
             const chatWidget = document.getElementById('chatWidget');
             const chatBubble = document.getElementById('chatBubble');

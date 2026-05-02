@@ -105,6 +105,7 @@ def ai_page():
                 response = model.generate_content(full_prompt)
                 result = getattr(response, "text", "Không có câu trả lời.")
             except Exception as e:
+                current_app.logger.error(f"AI Error (Gemini): {str(e)}")
                 result = f"Lỗi: {str(e)}"
     return render_template("ai.html", result=result)
 
@@ -145,5 +146,5 @@ def ai_chat():
         
         return jsonify({"reply": reply})
     except Exception as e:
-        print("AI ERROR:", e)
+        current_app.logger.error(f"AI Error (Gemini): {str(e)}")
         return jsonify({"reply": "Hệ thống AI đang gặp chút sự cố 😅"})

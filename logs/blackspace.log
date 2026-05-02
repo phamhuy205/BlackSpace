@@ -5936,3 +5936,70 @@ NameError: name 'WatchHistory' is not defined
 2026-04-27 22:25:23,310 INFO [app] Creating new movie: Game of Thrones
 2026-04-27 22:25:23,523 INFO [app] Movies synced successfully!
 2026-04-27 22:25:23,523 INFO [app] Movies synced successfully!
+2026-04-29 21:15:59,100 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.223:5000
+2026-04-29 21:15:59,100 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-04-29 21:16:07,852 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:07] "GET / HTTP/1.1" 200 -
+2026-04-29 21:16:07,873 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:07] "GET /static/style.css HTTP/1.1" 200 -
+2026-04-29 21:16:08,253 INFO [app] 404 Not Found: /favicon.ico
+2026-04-29 21:16:08,253 INFO [app] 404 Not Found: /favicon.ico
+2026-04-29 21:16:08,254 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-29 21:16:09,593 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:09] "GET /login HTTP/1.1" 200 -
+2026-04-29 21:16:09,601 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-04-29 21:16:09,614 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:09] "GET /static/css/auth.css HTTP/1.1" 200 -
+2026-04-29 21:16:24,518 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:24] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-29 21:16:25,436 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:25] "GET / HTTP/1.1" 200 -
+2026-04-29 21:16:25,449 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-04-29 21:16:30,659 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:30] "GET /admin/ HTTP/1.1" 200 -
+2026-04-29 21:16:30,667 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:16:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-04-29 21:19:36,475 INFO [app] Found 11 movies in JSON. Syncing...
+2026-04-29 21:19:36,475 INFO [app] Found 11 movies in JSON. Syncing...
+2026-04-29 21:19:38,435 INFO [app] Movies synced successfully!
+2026-04-29 21:19:38,435 INFO [app] Movies synced successfully!
+2026-04-29 21:19:38,435 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:19:38] "[32mPOST /admin/sync-movies HTTP/1.1[0m" 302 -
+2026-04-29 21:19:38,662 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:19:38] "GET /admin/ HTTP/1.1" 200 -
+2026-04-29 21:19:38,672 INFO [werkzeug] 127.0.0.1 - - [29/Apr/2026 21:19:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-02 14:59:20,798 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.223:5000
+2026-05-02 14:59:20,798 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-02 14:59:26,057 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.223:5000
+2026-05-02 14:59:26,057 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-02 15:02:37,729 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:37] "GET / HTTP/1.1" 200 -
+2026-05-02 15:02:37,752 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-02 15:02:38,012 INFO [app] 404 Not Found: /favicon.ico
+2026-05-02 15:02:38,012 INFO [app] 404 Not Found: /favicon.ico
+2026-05-02 15:02:38,012 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-02 15:02:43,169 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:43] "GET /login HTTP/1.1" 200 -
+2026-05-02 15:02:43,178 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-02 15:02:43,189 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:43] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2026-05-02 15:02:45,736 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-05-02 15:02:46,849 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:46] "GET / HTTP/1.1" 200 -
+2026-05-02 15:02:46,860 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-02 15:02:53,381 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 15:02:53] "POST /api/ai_chat HTTP/1.1" 200 -
+2026-05-02 20:23:55,281 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.223:5000
+2026-05-02 20:23:55,282 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-02 20:24:37,329 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.223:5000
+2026-05-02 20:24:37,329 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-02 20:24:46,888 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:46] "GET /login HTTP/1.1" 200 -
+2026-05-02 20:24:46,905 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-02 20:24:46,909 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:46] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2026-05-02 20:24:46,981 INFO [app] 404 Not Found: /favicon.ico
+2026-05-02 20:24:46,981 INFO [app] 404 Not Found: /favicon.ico
+2026-05-02 20:24:46,981 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-02 20:24:50,326 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:50] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-05-02 20:24:51,427 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:51] "GET / HTTP/1.1" 200 -
+2026-05-02 20:24:51,446 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-02 20:24:57,937 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:57] "POST /api/ai_chat HTTP/1.1" 200 -

@@ -1,3 +1,9 @@
+try:
+    from gevent import monkey
+    monkey.patch_all()
+except ImportError:
+    pass
+
 import os, json
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
@@ -11,7 +17,7 @@ from app.logging import setup_logging
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
-socketio = SocketIO(async_mode="threading")
+socketio = SocketIO()
 login_manager = LoginManager()
 mail = Mail()
 oauth = OAuth()

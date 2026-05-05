@@ -4,7 +4,8 @@ flask-bcrypt
 flask-login
 flask-socketio
 python-dotenv
-eventlet
+gevent
+gevent-websocket
 psycopg2-binary
 gunicorn
 google-generativeai

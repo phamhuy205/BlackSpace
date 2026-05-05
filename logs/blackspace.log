@@ -6086,3 +6086,17 @@ NameError: name 'WatchHistory' is not defined
  * Running on http://127.0.0.1:5000
  * Running on http://192.168.43.218:5000
 2026-05-05 10:30:16,718 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-05 10:30:43,648 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-05 10:30:43,648 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-05 10:30:48,532 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:48] "GET / HTTP/1.1" 200 -
+2026-05-05 10:30:48,576 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:48] "GET /static/style.css HTTP/1.1" 200 -
+2026-05-05 10:30:51,035 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:51] "GET /login HTTP/1.1" 200 -
+2026-05-05 10:30:51,074 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-05 10:30:51,087 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:51] "GET /static/css/auth.css HTTP/1.1" 200 -
+2026-05-05 10:30:51,575 INFO [app] 404 Not Found: /favicon.ico
+2026-05-05 10:30:51,575 INFO [app] 404 Not Found: /favicon.ico
+2026-05-05 10:30:51,576 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-05 10:30:53,454 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:53] "[32mGET /google/login HTTP/1.1[0m" 302 -

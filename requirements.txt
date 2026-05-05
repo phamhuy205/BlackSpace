@@ -11,4 +11,6 @@ gunicorn
 google-generativeai
 flask-limiter
 python-logging-loki
+Flask-Mail
+Authlib
 alembic

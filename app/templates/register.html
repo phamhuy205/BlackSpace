@@ -10,9 +10,14 @@
       </div>
     </div>
 
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
-        <div class="error-msg">{{ messages[0] }}</div>
+        {% for category, message in messages %}
+          <div class="{{ 'success-msg' if category == 'success' else 'error-msg' if category == 'error' else 'success-msg' }}" 
+               style="{{ 'background: rgba(34, 211, 238, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan);' if category == 'info' else '' }}">
+            {{ message }}
+          </div>
+        {% endfor %}
       {% endif %}
     {% endwith %}
 
@@ -41,6 +46,13 @@
       <div style="margin-top:8px">
         <button type="submit" class="btn-submit">Tạo tài khoản</button>
       </div>
+
+      <div class="divider">Hoặc</div>
+
+      <a href="{{ url_for('auth.google_login') }}" class="btn-google">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20" alt="Google">
+        Đăng ký bằng Google
+      </a>
 
       <div class="switch-text" style="margin-top:12px">Bạn đã có tài khoản? <a href="{{ url_for('auth.login') }}">Đăng nhập</a></div>
     </form>

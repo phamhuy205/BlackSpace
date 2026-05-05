@@ -6003,3 +6003,86 @@ NameError: name 'WatchHistory' is not defined
 2026-05-02 20:24:51,427 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:51] "GET / HTTP/1.1" 200 -
 2026-05-02 20:24:51,446 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2026-05-02 20:24:57,937 INFO [werkzeug] 127.0.0.1 - - [02/May/2026 20:24:57] "POST /api/ai_chat HTTP/1.1" 200 -
+2026-05-04 09:14:01,680 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-04 09:14:01,681 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-04 09:15:34,999 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-04 09:15:34,999 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-04 09:15:53,955 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-04 09:15:53,955 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-04 09:15:59,737 INFO [werkzeug] 127.0.0.1 - - [04/May/2026 09:15:59] "GET /login HTTP/1.1" 200 -
+2026-05-04 09:15:59,783 INFO [werkzeug] 127.0.0.1 - - [04/May/2026 09:15:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-04 09:15:59,785 INFO [werkzeug] 127.0.0.1 - - [04/May/2026 09:15:59] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2026-05-04 09:15:59,836 INFO [app] 404 Not Found: /favicon.ico
+2026-05-04 09:15:59,836 INFO [app] 404 Not Found: /favicon.ico
+2026-05-04 09:15:59,836 INFO [werkzeug] 127.0.0.1 - - [04/May/2026 09:15:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-04 09:16:16,032 INFO [werkzeug] 192.168.43.218 - - [04/May/2026 09:16:16] "GET / HTTP/1.1" 200 -
+2026-05-04 09:16:16,073 INFO [werkzeug] 192.168.43.218 - - [04/May/2026 09:16:16] "GET /static/style.css HTTP/1.1" 200 -
+2026-05-04 09:16:34,844 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:16:34] "GET / HTTP/1.1" 200 -
+2026-05-04 09:16:34,961 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:16:34] "GET /static/style.css HTTP/1.1" 200 -
+2026-05-04 09:17:11,462 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:11] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:11,712 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:11] "GET /search?keyword=test'%20AND%201644%20IN%20(SELECT%20(CHAR(113)%2BCHAR(113)%2BCHAR(107)%2BCHAR(120)%2BCHAR(113)%2B(SELECT%20ISNULL(CAST(COUNT(name)%20AS%20NVARCHAR(4000)),CHAR(32))%20FROM%20master..sysdatabases)%2BCHAR(113)%2BCHAR(122)%2BCHAR(106)%2BCHAR(98)%2BCHAR(113)))--%20pCjv HTTP/1.1" 200 -
+2026-05-04 09:17:11,912 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:11] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:12,121 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:12] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:12,333 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:12] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:12,542 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:12] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:12,758 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:12] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:12,967 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:12] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,217 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,435 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,445 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,467 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,476 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,484 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,502 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,514 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,523 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,532 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,547 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,566 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,578 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,594 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,602 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,613 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,641 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,670 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,695 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,704 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,720 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,730 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,752 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test HTTP/1.1" 200 -
+2026-05-04 09:17:13,773 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(LTRIM(STR(COUNT(name)))%20AS%20NVARCHAR(4000)),CHAR(32))%20FROM%20master..sysdatabases),1,1))>51)%20WAITFOR%20DELAY%20'0:0:5'--%20HWxx HTTP/1.1" 200 -
+2026-05-04 09:17:13,800 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(LTRIM(STR(COUNT(name)))%20AS%20NVARCHAR(4000)),CHAR(32))%20FROM%20master..sysdatabases),1,1))>48)%20WAITFOR%20DELAY%20'0:0:5'--%20HWxx HTTP/1.1" 200 -
+2026-05-04 09:17:13,809 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(LTRIM(STR(COUNT(name)))%20AS%20NVARCHAR(4000)),CHAR(32))%20FROM%20master..sysdatabases),1,1))>9)%20WAITFOR%20DELAY%20'0:0:5'--%20HWxx HTTP/1.1" 200 -
+2026-05-04 09:17:13,821 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20AND%201277%20IN%20(SELECT%20(CHAR(113)%2BCHAR(113)%2BCHAR(107)%2BCHAR(120)%2BCHAR(113)%2B(SELECT%20SUBSTRING((ISNULL(CAST(DB_NAME(0)%20AS%20NVARCHAR(4000)),CHAR(32))),1,1024))%2BCHAR(113)%2BCHAR(122)%2BCHAR(106)%2BCHAR(98)%2BCHAR(113)))--%20DuLg HTTP/1.1" 200 -
+2026-05-04 09:17:13,850 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(DB_NAME(0)%20AS%20NVARCHAR(4000)),CHAR(32))),1,1))>64)%20WAITFOR%20DELAY%20'0:0:5'--%20DDRQ HTTP/1.1" 200 -
+2026-05-04 09:17:13,859 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(DB_NAME(0)%20AS%20NVARCHAR(4000)),CHAR(32))),1,1))>32)%20WAITFOR%20DELAY%20'0:0:5'--%20DDRQ HTTP/1.1" 200 -
+2026-05-04 09:17:13,870 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(DB_NAME(0)%20AS%20NVARCHAR(4000)),CHAR(32))),1,1))>1)%20WAITFOR%20DELAY%20'0:0:5'--%20DDRQ HTTP/1.1" 200 -
+2026-05-04 09:17:13,880 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20AND%203566%20IN%20(SELECT%20(CHAR(113)%2BCHAR(113)%2BCHAR(107)%2BCHAR(120)%2BCHAR(113)%2B(SELECT%20SUBSTRING((ISNULL(CAST(DB_NAME()%20AS%20NVARCHAR(4000)),CHAR(32))),1,1024))%2BCHAR(113)%2BCHAR(122)%2BCHAR(106)%2BCHAR(98)%2BCHAR(113)))--%20tfIO HTTP/1.1" 200 -
+2026-05-04 09:17:13,890 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(DB_NAME()%20AS%20NVARCHAR(4000)),CHAR(32))),1,1))>64)%20WAITFOR%20DELAY%20'0:0:5'--%20wayV HTTP/1.1" 200 -
+2026-05-04 09:17:13,898 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(DB_NAME()%20AS%20NVARCHAR(4000)),CHAR(32))),1,1))>32)%20WAITFOR%20DELAY%20'0:0:5'--%20wayV HTTP/1.1" 200 -
+2026-05-04 09:17:13,909 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:17:13] "GET /search?keyword=test'%20IF(UNICODE(SUBSTRING((SELECT%20ISNULL(CAST(DB_NAME()%20AS%20NVARCHAR(4000)),CHAR(32))),1,1))>1)%20WAITFOR%20DELAY%20'0:0:5'--%20wayV HTTP/1.1" 200 -
+2026-05-04 09:18:47,984 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:18:47] "GET /login HTTP/1.1" 200 -
+2026-05-04 09:18:48,071 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:18:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-04 09:18:48,071 INFO [werkzeug] 192.168.43.232 - - [04/May/2026 09:18:48] "GET /static/css/auth.css HTTP/1.1" 200 -
+2026-05-04 09:19:20,743 INFO [werkzeug] 192.168.43.218 - - [04/May/2026 09:19:20] "GET /login HTTP/1.1" 200 -
+2026-05-04 09:19:20,777 INFO [werkzeug] 192.168.43.218 - - [04/May/2026 09:19:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-04 09:19:20,778 INFO [werkzeug] 192.168.43.218 - - [04/May/2026 09:19:20] "GET /static/css/auth.css HTTP/1.1" 200 -
+2026-05-05 10:26:02,510 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-05 10:26:02,510 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-05 10:30:16,718 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-05 10:30:16,718 INFO [werkzeug] [33mPress CTRL+C to quit[0m

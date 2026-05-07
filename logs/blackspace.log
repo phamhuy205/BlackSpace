@@ -6100,3 +6100,109 @@ NameError: name 'WatchHistory' is not defined
 2026-05-05 10:30:51,575 INFO [app] 404 Not Found: /favicon.ico
 2026-05-05 10:30:51,576 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
 2026-05-05 10:30:53,454 INFO [werkzeug] 127.0.0.1 - - [05/May/2026 10:30:53] "[32mGET /google/login HTTP/1.1[0m" 302 -
+2026-05-07 13:49:20,803 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-07 13:49:20,805 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-07 13:49:33,772 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-07 13:49:33,772 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-07 13:49:44,591 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:44] "GET / HTTP/1.1" 200 -
+2026-05-07 13:49:44,660 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:44] "GET /static/style.css HTTP/1.1" 200 -
+2026-05-07 13:49:48,236 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 13:49:48,236 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 13:49:48,236 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-07 13:49:52,949 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:52] "GET /login HTTP/1.1" 200 -
+2026-05-07 13:49:52,990 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 13:49:53,002 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:53] "GET /static/css/auth.css HTTP/1.1" 200 -
+2026-05-07 13:49:56,169 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-05-07 13:49:57,801 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:57] "GET / HTTP/1.1" 200 -
+2026-05-07 13:49:57,836 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:49:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 13:50:08,168 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "GET /watch/High%20&%20Low%20The%20Worst%20X(2022) HTTP/1.1" 200 -
+2026-05-07 13:50:08,205 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 13:50:08,228 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "GET /socket.io/?EIO=4&transport=polling&t=Pu1CstS HTTP/1.1" 200 -
+2026-05-07 13:50:08,241 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "POST /socket.io/?EIO=4&transport=polling&t=Pu1Cstf&sid=0rs1UL-i-6rY3gjdAAAA HTTP/1.1" 200 -
+2026-05-07 13:50:08,243 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "GET /socket.io/?EIO=4&transport=polling&t=Pu1Cstg&sid=0rs1UL-i-6rY3gjdAAAA HTTP/1.1" 200 -
+2026-05-07 13:50:08,877 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "GET /api/comments/19 HTTP/1.1" 200 -
+2026-05-07 13:50:08,886 INFO [app] 404 Not Found: /static/uploads/avatars/user_4_zeref.jpg
+2026-05-07 13:50:08,886 INFO [app] 404 Not Found: /static/uploads/avatars/user_4_zeref.jpg
+2026-05-07 13:50:08,886 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "[33mGET /static/uploads/avatars/user_4_zeref.jpg HTTP/1.1[0m" 404 -
+2026-05-07 13:50:08,888 INFO [app] 404 Not Found: /static/uploads/avatars/user_6_IMG_1777694028692_1777694168102.jpg
+2026-05-07 13:50:08,888 INFO [app] 404 Not Found: /static/uploads/avatars/user_6_IMG_1777694028692_1777694168102.jpg
+2026-05-07 13:50:08,888 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "[33mGET /static/uploads/avatars/user_6_IMG_1777694028692_1777694168102.jpg HTTP/1.1[0m" 404 -
+2026-05-07 13:50:08,894 INFO [app] 404 Not Found: /static/uploads/avatars/user_1_Miyuki_x_Kaguya_1.jpg
+2026-05-07 13:50:08,894 INFO [app] 404 Not Found: /static/uploads/avatars/user_1_Miyuki_x_Kaguya_1.jpg
+2026-05-07 13:50:08,895 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:08] "[33mGET /static/uploads/avatars/user_1_Miyuki_x_Kaguya_1.jpg HTTP/1.1[0m" 404 -
+2026-05-07 13:50:24,720 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 13:50:24,720 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 13:50:24,721 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-07 13:50:31,705 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:31] "GET / HTTP/1.1" 200 -
+2026-05-07 13:50:31,747 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:31] "GET /socket.io/?EIO=4&transport=websocket&sid=0rs1UL-i-6rY3gjdAAAA HTTP/1.1" 200 -
+2026-05-07 13:50:31,756 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 13:50:52,244 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:52] "GET /profile HTTP/1.1" 200 -
+2026-05-07 13:50:52,277 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 13:50:52,279 INFO [app] 404 Not Found: /static/uploads/avatars/user_3_Chua_yen_tu.png
+2026-05-07 13:50:52,279 INFO [app] 404 Not Found: /static/uploads/avatars/user_3_Chua_yen_tu.png
+2026-05-07 13:50:52,279 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:50:52] "[33mGET /static/uploads/avatars/user_3_Chua_yen_tu.png HTTP/1.1[0m" 404 -
+2026-05-07 13:51:01,094 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:51:01] "GET /phim-chieu-rap HTTP/1.1" 200 -
+2026-05-07 13:51:01,129 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:51:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 13:51:03,416 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:51:03] "GET /info/Avengers:%20Endgame HTTP/1.1" 200 -
+2026-05-07 13:51:03,452 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:51:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 13:57:06,816 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:57:06] "GET / HTTP/1.1" 200 -
+2026-05-07 13:57:06,849 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 13:57:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 15:17:36,211 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:36] "GET / HTTP/1.1" 200 -
+2026-05-07 15:17:36,241 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:36] "GET /static/style.css HTTP/1.1" 200 -
+2026-05-07 15:17:56,045 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "GET /watch/High%20&%20Low%20The%20Worst%20X(2022) HTTP/1.1" 200 -
+2026-05-07 15:17:56,085 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 15:17:56,096 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "GET /socket.io/?EIO=4&transport=polling&t=Pu1Wyzv HTTP/1.1" 200 -
+2026-05-07 15:17:56,114 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "POST /socket.io/?EIO=4&transport=polling&t=Pu1Wy-7&sid=KtrLsrQnXJY0y45mAAAA HTTP/1.1" 200 -
+2026-05-07 15:17:56,115 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "GET /socket.io/?EIO=4&transport=polling&t=Pu1Wy-8&sid=KtrLsrQnXJY0y45mAAAA HTTP/1.1" 200 -
+2026-05-07 15:17:56,602 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "GET /api/comments/19 HTTP/1.1" 200 -
+2026-05-07 15:17:56,613 INFO [app] 404 Not Found: /static/uploads/avatars/user_6_IMG_1777694028692_1777694168102.jpg
+2026-05-07 15:17:56,613 INFO [app] 404 Not Found: /static/uploads/avatars/user_6_IMG_1777694028692_1777694168102.jpg
+2026-05-07 15:17:56,614 INFO [app] 404 Not Found: /static/uploads/avatars/user_1_Miyuki_x_Kaguya_1.jpg
+2026-05-07 15:17:56,614 INFO [app] 404 Not Found: /static/uploads/avatars/user_4_zeref.jpg
+2026-05-07 15:17:56,614 INFO [app] 404 Not Found: /static/uploads/avatars/user_4_zeref.jpg
+2026-05-07 15:17:56,615 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "[33mGET /static/uploads/avatars/user_4_zeref.jpg HTTP/1.1[0m" 404 -
+2026-05-07 15:17:56,615 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "[33mGET /static/uploads/avatars/user_6_IMG_1777694028692_1777694168102.jpg HTTP/1.1[0m" 404 -
+2026-05-07 15:17:56,614 INFO [app] 404 Not Found: /static/uploads/avatars/user_1_Miyuki_x_Kaguya_1.jpg
+2026-05-07 15:17:56,617 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:17:56] "[33mGET /static/uploads/avatars/user_1_Miyuki_x_Kaguya_1.jpg HTTP/1.1[0m" 404 -
+2026-05-07 15:18:02,631 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 15:18:02,631 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 15:18:02,631 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-07 15:18:14,997 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:14] "GET / HTTP/1.1" 200 -
+2026-05-07 15:18:24,540 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:24] "GET / HTTP/1.1" 200 -
+2026-05-07 15:18:26,288 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:26] "GET / HTTP/1.1" 200 -
+2026-05-07 15:18:26,329 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:26] "GET /socket.io/?EIO=4&transport=websocket&sid=KtrLsrQnXJY0y45mAAAA HTTP/1.1" 200 -
+2026-05-07 15:18:26,337 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 15:18:31,513 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:31] "GET /watch/JoJo%20Stell%20Ball%20Run HTTP/1.1" 200 -
+2026-05-07 15:18:31,548 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 15:18:31,561 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:31] "GET /socket.io/?EIO=4&transport=polling&t=Pu1X5e4 HTTP/1.1" 200 -
+2026-05-07 15:18:31,575 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:31] "POST /socket.io/?EIO=4&transport=polling&t=Pu1X5eE&sid=1M9Ceu-BIo1N8OoYAAAC HTTP/1.1" 200 -
+2026-05-07 15:18:31,576 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:31] "GET /socket.io/?EIO=4&transport=polling&t=Pu1X5eF&sid=1M9Ceu-BIo1N8OoYAAAC HTTP/1.1" 200 -
+2026-05-07 15:18:31,886 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:31] "GET /api/comments/20 HTTP/1.1" 200 -
+2026-05-07 15:18:40,621 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 15:18:40,621 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 15:18:40,621 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-07 15:18:55,160 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:55] "GET / HTTP/1.1" 200 -
+2026-05-07 15:18:55,196 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:55] "GET /socket.io/?EIO=4&transport=websocket&sid=1M9Ceu-BIo1N8OoYAAAC HTTP/1.1" 200 -
+2026-05-07 15:18:55,207 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:18:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 15:19:09,926 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:09] "GET /watch/Spider-Man:%20No%20Way%20Home HTTP/1.1" 200 -
+2026-05-07 15:19:09,962 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 15:19:09,974 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:09] "GET /socket.io/?EIO=4&transport=polling&t=Pu1XF0I HTTP/1.1" 200 -
+2026-05-07 15:19:09,984 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:09] "POST /socket.io/?EIO=4&transport=polling&t=Pu1XF0T&sid=b16v0BbRep4RPlQaAAAE HTTP/1.1" 200 -
+2026-05-07 15:19:09,986 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:09] "GET /socket.io/?EIO=4&transport=polling&t=Pu1XF0U&sid=b16v0BbRep4RPlQaAAAE HTTP/1.1" 200 -
+2026-05-07 15:19:10,367 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:10] "GET /api/comments/15 HTTP/1.1" 200 -
+2026-05-07 15:19:21,507 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 15:19:21,507 INFO [app] 404 Not Found: /favicon.ico
+2026-05-07 15:19:21,507 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-07 15:19:28,079 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:28] "GET / HTTP/1.1" 200 -
+2026-05-07 15:19:28,110 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:28] "GET /socket.io/?EIO=4&transport=websocket&sid=b16v0BbRep4RPlQaAAAE HTTP/1.1" 200 -
+2026-05-07 15:19:28,119 INFO [werkzeug] 127.0.0.1 - - [07/May/2026 15:19:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-07 20:35:57,757 INFO [app] Found 11 movies in JSON. Syncing...
+2026-05-07 20:35:57,757 INFO [app] Found 11 movies in JSON. Syncing...
+2026-05-07 20:36:00,826 INFO [app] Movies synced successfully!
+2026-05-07 20:36:00,826 INFO [app] Movies synced successfully!

@@ -1,12 +1,42 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from flask import Blueprint, render_template, request, jsonify
 from flask_login import login_required, current_user
-from sqlalchemy import func
-from app.models import Movie, Comment, WatchHistory
+from sqlalchemy import func, desc
+from app.models import Movie, Comment, WatchHistory, MovieView
 from app import db
 
 bp = Blueprint("main", __name__)
+
+def get_top_movies(timeframe='day', limit=10):
+    """Lấy top phim được xem nhiều nhất theo ngày, tuần, tháng"""
+    now = datetime.utcnow()
+    if timeframe == 'day':
+        start_date = now - timedelta(days=1)
+    elif timeframe == 'week':
+        start_date = now - timedelta(weeks=1)
+    elif timeframe == 'month':
+        start_date = now - timedelta(days=30)
+    else:
+        start_date = now - timedelta(days=1)
+
+    top_movie_ids = db.session.query(
+        MovieView.movie_id, func.count(MovieView.id).label('view_count')
+    ).filter(MovieView.viewed_at >= start_date)\
+     .group_by(MovieView.movie_id)\
+     .order_by(desc('view_count'))\
+     .limit(limit).all()
+
+    movie_ids = [m[0] for m in top_movie_ids]
+    
+    # Preserve order of ranking
+    if not movie_ids:
+        return []
+        
+    movies = Movie.query.filter(Movie.id.in_(movie_ids)).all()
+    # Sort the movie objects according to the ranking order
+    movies_sorted = sorted(movies, key=lambda m: movie_ids.index(m.id))
+    return [m.to_dict() for m in movies_sorted]
 
 @bp.route("/")
 def home():
@@ -19,9 +49,17 @@ def home():
     # Exclude featured movie from the main list
     movies_list = [m.to_dict() for m in all_movies if m.id != (featured_movie.id if featured_movie else None)]
     
+    # Get top movies for banners
+    top_day = get_top_movies('day', 5)
+    top_week = get_top_movies('week', 5)
+    top_month = get_top_movies('month', 5)
+    
     return render_template("index.html", 
                            featured_movie=featured_movie.to_dict() if featured_movie else None,
                            movies=movies_list, 
+                           top_day=top_day,
+                           top_week=top_week,
+                           top_month=top_month,
                            user=current_user)
 
 @bp.route("/search")
@@ -165,7 +203,15 @@ def watch(title):
         if not history or (datetime.utcnow() - history.watched_at).total_seconds() > 600:
             new_history = WatchHistory(user_id=current_user.id, movie_id=movie.id)
             db.session.add(new_history)
-            db.session.commit()
+            
+    # Record MovieView (always record for top ranking statistics)
+    new_view = MovieView(movie_id=movie.id)
+    db.session.add(new_view)
+    
+    # Increment total views
+    movie.views = (movie.views or 0) + 1
+    
+    db.session.commit()
         
     return render_template("watch.html", movie=movie_data)
 

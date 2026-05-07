@@ -46,6 +46,9 @@
         {% endif %}
         <h3 class="movie-title">{{ m.title }}</h3>
         <p class="movie-genre">{{ m.genre }}</p>
+        <div class="movie-stats">
+          <span class="view-count"><i class="fas fa-eye"></i> {{ m.views or 0 }} lượt xem</span>
+        </div>
         <div class="movie-actions-btns">
             <a href="{{ url_for('main.watch', title=m.title) }}" class="watch-btn">▶ Xem</a>
             <a href="{{ url_for('main.info', title=m.title) }}" class="info-btn">ⓘ Thông tin</a>
@@ -60,4 +63,191 @@
     {% endif %}
   </div>
 </div>
+
+<!-- Ranking Section -->
+{% if not page_title or page_title == 'Trang chủ' %}
+<div class="section-container ranking-section">
+  <h2 class="page-title"><i class="fas fa-chart-line"></i> Bảng Xếp Hạng</h2>
+  
+  <div class="ranking-tabs">
+    <button class="tab-btn active" onclick="showRanking('day')">Hôm nay</button>
+    <button class="tab-btn" onclick="showRanking('week')">Tuần này</button>
+    <button class="tab-btn" onclick="showRanking('month')">Tháng này</button>
+  </div>
+
+  <div id="ranking-day" class="ranking-content active">
+    {% if top_day %}
+      <div class="ranking-grid">
+        {% for m in top_day %}
+        <div class="ranking-item">
+          <span class="rank-number">{{ loop.index }}</span>
+          <a href="{{ url_for('main.info', title=m.title) }}">
+            <img src="{{ m.poster }}" alt="{{ m.title }}" class="rank-poster">
+          </a>
+          <div class="rank-info">
+            <h4 class="rank-title">{{ m.title }}</h4>
+            <span class="rank-views"><i class="fas fa-eye"></i> {{ m.views }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="no-data">Chưa có dữ liệu xếp hạng hôm nay.</p>
+    {% endif %}
+  </div>
+
+  <div id="ranking-week" class="ranking-content">
+    {% if top_week %}
+      <div class="ranking-grid">
+        {% for m in top_week %}
+        <div class="ranking-item">
+          <span class="rank-number">{{ loop.index }}</span>
+          <a href="{{ url_for('main.info', title=m.title) }}">
+            <img src="{{ m.poster }}" alt="{{ m.title }}" class="rank-poster">
+          </a>
+          <div class="rank-info">
+            <h4 class="rank-title">{{ m.title }}</h4>
+            <span class="rank-views"><i class="fas fa-eye"></i> {{ m.views }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="no-data">Chưa có dữ liệu xếp hạng tuần này.</p>
+    {% endif %}
+  </div>
+
+  <div id="ranking-month" class="ranking-content">
+    {% if top_month %}
+      <div class="ranking-grid">
+        {% for m in top_month %}
+        <div class="ranking-item">
+          <span class="rank-number">{{ loop.index }}</span>
+          <a href="{{ url_for('main.info', title=m.title) }}">
+            <img src="{{ m.poster }}" alt="{{ m.title }}" class="rank-poster">
+          </a>
+          <div class="rank-info">
+            <h4 class="rank-title">{{ m.title }}</h4>
+            <span class="rank-views"><i class="fas fa-eye"></i> {{ m.views }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="no-data">Chưa có dữ liệu xếp hạng tháng này.</p>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+function showRanking(timeframe) {
+  // Hide all content
+  document.querySelectorAll('.ranking-content').forEach(el => el.classList.remove('active'));
+  // Remove active from all buttons
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  
+  // Show selected content and set active button
+  document.getElementById('ranking-' + timeframe).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+</script>
+
+<style>
+.movie-stats {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.ranking-section {
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+.ranking-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 10px;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 5px 15px;
+  transition: all 0.3s;
+  position: relative;
+}
+.tab-btn.active {
+  color: var(--primary);
+  font-weight: bold;
+}
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+}
+.ranking-content {
+  display: none;
+}
+.ranking-content.active {
+  display: block;
+}
+.ranking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+.ranking-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.1);
+}
+.rank-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  min-width: 25px;
+}
+.rank-poster {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.rank-info {
+  flex: 1;
+}
+.rank-title {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.rank-views {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.no-data {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
+}
+</style>
+{% endif %}
 {% endblock %}

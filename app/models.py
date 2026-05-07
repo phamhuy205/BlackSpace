@@ -34,6 +34,7 @@ class Movie(db.Model):
     is_new = db.Column(db.Boolean, default=False)
     director = db.Column(db.String(255))
     cast = db.Column(db.String(500))
+    views = db.Column(db.Integer, default=0)
     
     # Relationships
     episodes = db.relationship('Episode', backref='movie', lazy=True, cascade="all, delete-orphan")
@@ -53,8 +54,14 @@ class Movie(db.Model):
             'url': self.url,
             'director': self.director,
             'cast': self.cast,
+            'views': self.views,
             'episodes': [ep.to_dict() for ep in self.episodes] if self.episodes else []
         }
+
+class MovieView(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    movie_id = db.Column(db.Integer, db.ForeignKey('movie.id'), nullable=False)
+    viewed_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 class WatchHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)

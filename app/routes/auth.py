@@ -43,25 +43,50 @@ def google_login():
 @bp.route("/google/authorize")
 def google_authorize():
     token = oauth.google.authorize_access_token()
-    user_info = token.get('userinfo')
-    if not user_info:
-        flash("Không thể lấy thông tin từ Google.", "error")
-        return redirect(url_for('auth.login'))
-    
-    email = user_info.get('email')
+
+    resp = oauth.google.get(
+        'https://www.googleapis.com/oauth2/v2/userinfo'
+    )
+
+    user_info = resp.json()
+
+    email = user_info.get("email")
+
+    if not email:
+        flash("Không lấy được email từ Google", "error")
+        return redirect(url_for("auth.login"))
+
     user = User.query.filter_by(email=email).first()
 
     if user:
-        # User exists, log them in directly
         login_user(user)
-        flash(f"Chào mừng {user.username} quay lại!", "success")
-        return redirect(url_for('main.home'))
-    else:
-        # New user, send verification email
-        send_verification_email(email)
-        flash("Một liên kết xác nhận đã được gửi đến Gmail của bạn. Vui lòng kiểm tra để hoàn tất đăng nhập lần đầu.", "info")
-        return redirect(url_for('auth.login'))
+        flash("Đăng nhập Google thành công!", "success")
+        return redirect(url_for("main.home"))
 
+    username = email.split("@")[0]
+
+    base_username = username
+    counter = 1
+
+    while User.query.filter_by(username=username).first():
+        username = f"{base_username}{counter}"
+        counter += 1
+
+    new_user = User(
+        username=username,
+        email=email,
+        password=generate_password_hash("google_login"),
+        avatar="/static/images/default_avatar.svg"
+    )
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    login_user(new_user)
+
+    flash("Tạo tài khoản Google thành công!", "success")
+
+    return redirect(url_for("main.home"))
 @bp.route("/verify_google/<token>")
 def verify_google(token):
     email = confirm_verification_token(token)

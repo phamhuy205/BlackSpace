@@ -45,17 +45,17 @@ def sync_movies_from_json(app):
                 app.logger.info("Creating new movie: %s", m_data.get('title'))
             
             # Update fields
-            movie.title = m_data.get('title')
-            movie.genre = m_data.get('genre')
-            movie.category = m_data.get('category')
-            movie.type = m_data.get('type')
+            movie.title = m_data.get('title').strip() if m_data.get('title') else None
+            movie.genre = m_data.get('genre').strip() if m_data.get('genre') else None
+            movie.category = m_data.get('category').strip() if m_data.get('category') else None
+            movie.type = m_data.get('type').strip() if m_data.get('type') else None
             movie.year = m_data.get('year')
-            movie.url = m_data.get('url')
-            movie.poster = m_data.get('poster')
-            movie.description = m_data.get('description')
+            movie.url = m_data.get('url').strip() if m_data.get('url') else None
+            movie.poster = m_data.get('poster').strip() if m_data.get('poster') else None
+            movie.description = m_data.get('description').strip() if m_data.get('description') else None
             movie.is_new = m_data.get('isNew', False) # JSON uses camelCase isNew
-            movie.director = m_data.get('director')
-            movie.cast = m_data.get('cast')
+            movie.director = m_data.get('director').strip() if m_data.get('director') else None
+            movie.cast = m_data.get('cast').strip() if m_data.get('cast') else None
             
             # Flush to ensure movie has an ID before adding episodes
             db.session.flush()

@@ -6892,3 +6892,11 @@ sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate
 2026-05-08 20:28:13,956 INFO [werkzeug] 127.0.0.1 - - [08/May/2026 20:28:13] "GET /socket.io/?EIO=4&transport=polling&t=Pu7na5E HTTP/1.1" 200 -
 2026-05-08 20:28:13,987 INFO [werkzeug] 127.0.0.1 - - [08/May/2026 20:28:13] "POST /socket.io/?EIO=4&transport=polling&t=Pu7na6D&sid=zGZwvsfds4h_PPihAAAH HTTP/1.1" 200 -
 2026-05-08 20:28:13,990 INFO [werkzeug] 127.0.0.1 - - [08/May/2026 20:28:13] "GET /socket.io/?EIO=4&transport=polling&t=Pu7na6E&sid=zGZwvsfds4h_PPihAAAH HTTP/1.1" 200 -
+2026-05-08 21:53:20,941 INFO [app] Found 14 movies in JSON. Syncing...
+2026-05-08 21:53:20,941 INFO [app] Found 14 movies in JSON. Syncing...
+2026-05-08 21:53:23,337 INFO [app] Creating new movie: HiGH&LOW THE MOVIE 2 END OF SKY 
+2026-05-08 21:53:23,337 INFO [app] Creating new movie: HiGH&LOW THE MOVIE 2 END OF SKY 
+2026-05-08 21:53:23,535 INFO [app] Creating new movie: CROWS ZERO 
+2026-05-08 21:53:23,535 INFO [app] Creating new movie: CROWS ZERO 
+2026-05-08 21:53:24,560 INFO [app] Movies synced successfully!
+2026-05-08 21:53:24,560 INFO [app] Movies synced successfully!

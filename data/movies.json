@@ -103,7 +103,6 @@
     "director": "Daisuke Ninomiya",
     "cast": "Kazuma Kawamura, Hokuto Yoshino"
   },
-  
   {
     "title": "High & Low The Movie",
     "genre": "Hành động",
@@ -116,6 +115,32 @@
     "isNew": false,
     "director": "Shigeaki Kubo",
     "cast": "Ryōhei Kurosawa, Yuki Yamada"
+  },
+  {
+    "title": "HiGH&LOW THE MOVIE 2 END OF SKY ",
+    "genre": "Hành động",
+    "category": "Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2017,
+    "url": "https://drive.google.com/file/d/1m7C_mzD5JCVb7pRGOCsc1zNoBjta7lQt/view?usp=drive_link",
+    "poster": "https://www.themoviedb.org/t/p/w1280/tdZnaktqIgFaKN00KlOj50emJn5.jpg",
+    "description": "Liên minh SWORD đối đầu với băng đảng Doubt.",
+    "isNew": false,
+    "director": "Shigeaki Kubo",
+    "cast": "Ryōhei Kurosawa, Yuki Yamada"
+  },
+  {
+    "title": "CROWS ZERO ",
+    "genre": "Hành động",
+    "category": "Phim chiếu rạp",
+    "type": "Phim lẻ",
+    "year": 2007,
+    "url": "https://drive.google.com/file/d/1MsQjsP7WuDe-KS6gW2k5wqlY93UFyryS/view?usp=drive_link",
+    "poster": "https://www.themoviedb.org/t/p/w1280/so1E9wUAXJi9hqGRNPgoVQd7HaX.jpg",
+    "description": "Cuộc chiến giữa các băng đảng học đường tại Suzuran High School.",
+    "isNew": false,
+    "director": "Takashi Miike",
+    "cast": "Shun Oru, Takayuki Yamada"
   },
   {
     "title": "JoJo Stell Ball Run",

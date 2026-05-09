@@ -6960,3 +6960,85 @@ metadata {
 message: "API key expired. Please renew the API key."
 ]
 2026-05-09 08:46:03,258 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:46:03] "POST /api/ai_chat HTTP/1.1" 200 -
+2026-05-09 08:49:40,758 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-09 08:49:40,758 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-09 08:53:34,434 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-09 08:53:34,434 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-09 08:53:46,375 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:53:46] "GET / HTTP/1.1" 200 -
+2026-05-09 08:53:46,417 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:53:46] "GET /static/style.css HTTP/1.1" 200 -
+2026-05-09 08:53:53,029 ERROR [app] AI Error (Gemini): 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key expired. Please renew the API key."
+]
+2026-05-09 08:53:53,029 ERROR [app] AI Error (Gemini): 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key expired. Please renew the API key."
+]
+2026-05-09 08:53:53,030 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:53:53] "POST /api/ai_chat HTTP/1.1" 200 -
+2026-05-09 08:55:37,571 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-09 08:55:37,571 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-09 08:55:45,188 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:55:45] "GET / HTTP/1.1" 200 -
+2026-05-09 08:55:45,234 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:55:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-09 08:55:47,767 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:55:47] "GET /login HTTP/1.1" 200 -
+2026-05-09 08:55:47,811 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:55:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-09 08:55:47,822 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:55:47] "GET /static/css/auth.css HTTP/1.1" 200 -
+2026-05-09 08:55:50,206 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:55:50] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-05-09 08:55:52,295 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:55:52] "GET / HTTP/1.1" 200 -
+2026-05-09 08:55:52,339 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:55:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-09 08:56:00,230 ERROR [app] AI Error (Gemini): 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key expired. Please renew the API key."
+]
+2026-05-09 08:56:00,230 ERROR [app] AI Error (Gemini): 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key expired. Please renew the API key."
+]
+2026-05-09 08:56:00,230 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:56:00] "POST /api/ai_chat HTTP/1.1" 200 -
+2026-05-09 08:56:05,700 ERROR [app] AI Error (Gemini): 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key expired. Please renew the API key."
+]
+2026-05-09 08:56:05,700 ERROR [app] AI Error (Gemini): 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key expired. Please renew the API key."
+]
+2026-05-09 08:56:05,700 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:56:05] "POST /api/ai_chat HTTP/1.1" 200 -

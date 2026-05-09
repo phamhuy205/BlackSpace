@@ -6900,3 +6900,32 @@ sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate
 2026-05-08 21:53:23,535 INFO [app] Creating new movie: CROWS ZERO 
 2026-05-08 21:53:24,560 INFO [app] Movies synced successfully!
 2026-05-08 21:53:24,560 INFO [app] Movies synced successfully!
+2026-05-09 08:36:27,256 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.43.218:5000
+2026-05-09 08:36:27,256 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-09 08:36:45,796 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:36:45] "GET / HTTP/1.1" 200 -
+2026-05-09 08:36:45,842 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:36:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-05-09 08:36:51,989 INFO [app] 404 Not Found: /favicon.ico
+2026-05-09 08:36:51,989 INFO [app] 404 Not Found: /favicon.ico
+2026-05-09 08:36:51,990 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:36:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-09 08:36:59,822 ERROR [app] AI Error (Gemini): 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key expired. Please renew the API key."
+]
+2026-05-09 08:36:59,822 ERROR [app] AI Error (Gemini): 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key expired. Please renew the API key."
+]
+2026-05-09 08:36:59,822 INFO [werkzeug] 127.0.0.1 - - [09/May/2026 08:36:59] "POST /api/ai_chat HTTP/1.1" 200 -

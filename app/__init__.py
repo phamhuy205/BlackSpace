@@ -25,7 +25,7 @@ oauth = OAuth()
 client = None
 
 def create_app():
-    load_dotenv()
+    load_dotenv(override=True)
 
     app = Flask(__name__, template_folder="templates", static_folder="static")
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL", "sqlite:///users.db")
